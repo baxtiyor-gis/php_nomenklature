@@ -24,5 +24,8 @@ $result->masshtab = $data->masshtab;
 // echo file_get_contents("php://input");
 
 if ($data->masshtab == 1) {
-    echo json_encode($result->hundred());
+    echo json_encode($result->zone());
+}
+if ($data->masshtab == 2) {
+    echo json_encode($result->five_hundred());
 }

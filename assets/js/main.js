@@ -8,6 +8,59 @@ const form = document.querySelector("#form")
 // W: West-G`arb
 // E: East - Sharq
 
+const chanje_degre =  () => {
+    let lat0 = document.querySelector("#lat0").value;
+    let lat1 = document.querySelector("#lat1").value;
+    let lat2 = document.querySelector("#lat2").value;
+    let lat3 = document.querySelector("#lat3").value;
+
+    let long0 = document.querySelector("#long0").value;
+    let long1 = document.querySelector("#long1").value;
+    let long2 = document.querySelector("#long2").value;
+    let long3 = document.querySelector("#long3").value;
+
+    let latitude = DMSToDD(lat1, lat2, lat3).toFixed(7)
+    let longitude =  DMSToDD(long1, long2, long3).toFixed(7)
+
+    if (lat1 & lat2 & lat3) {
+        document.querySelector("#lat0").value = latitude
+    }
+    if (long1 & long2 & long3) {
+        document.querySelector("#long0").value = longitude
+    }
+
+
+}
+
+
+const chanje_demical_degree = () => {
+    let lat0 = document.querySelector("#lat0").value;
+    let long0 = document.querySelector("#long0").value;
+    let lat2 = document.querySelector("#lat2").value;
+    let lat3 = document.querySelector("#lat3").value;
+    
+    let long1 = document.querySelector("#long1").value;
+    let long2 = document.querySelector("#long2").value;
+    let long3 = document.querySelector("#long3").value;
+
+    if (lat0) {
+        document.querySelector("#lat1").value = DDToDMS2(lat0).d
+        document.querySelector("#lat2").value = DDToDMS2(lat0).m
+        document.querySelector("#lat3").value = DDToDMS2(lat0).s
+    }
+    if (long0) {
+        document.querySelector("#long1").value = DDToDMS2(long0).d
+        document.querySelector("#long2").value = DDToDMS2(long0).m
+        document.querySelector("#long3").value = DDToDMS2(long0).s
+    }
+
+
+}
+
+
+
+
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const lat1 = document.querySelector("#lat1").value;
@@ -31,7 +84,7 @@ form.addEventListener("submit", (e) => {
     console.log(data);
 })
 
-function calculate(data) {
+const calculate = (data) => {
     fetch("http://localhost/nomenklatura/api/nomenklatura.php", {
         method: "POST",
         headers: {
@@ -45,14 +98,15 @@ function calculate(data) {
         })
         .then(result => {
             console.log(result);
-            // renderHtml(result)
+            renderHtml(result)
         })
         .catch((error) => {
             console.error(error);
         });
 }
 
-function renderHtml(data) {
+
+const renderHtml = (data) => {
     let result = document.querySelector("#result")
     let nomenklatura = data.nomenklatura;
     let lat1 = DDToDMS(data.latitude.start)
@@ -71,10 +125,12 @@ function renderHtml(data) {
 
 
 }
-function DMSToDD(d, m, s) {
+
+const DMSToDD = (d, m, s) => {
     return parseFloat(d) + (parseFloat(m) / 60) + (parseFloat(s) / (60 * 60));
 }
-function DDToDMS(deg) {
+
+const DDToDMS = (deg) => {
     let d = parseInt(deg);
     let minfloat = Math.abs((deg - d) * 60);
     let m = Math.floor(minfloat);
@@ -86,4 +142,17 @@ function DDToDMS(deg) {
     if (m == 60) { d++; m = 0; }
 
     return d + "° " + m + "&apos;  " + s + "&quot; ";
+}
+const DDToDMS2 = (deg) => {
+    let d = parseInt(deg);
+    let minfloat = Math.abs((deg - d) * 60);
+    let m = Math.floor(minfloat);
+    let secfloat = (minfloat - m) * 60;
+    let s = Math.round(secfloat);
+    d = Math.abs(d);
+
+    if (s == 60) { m++; s = 0; }
+    if (m == 60) { d++; m = 0; }
+
+    return { d, m, s };
 }
