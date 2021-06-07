@@ -29,3 +29,6 @@ if ($data->masshtab == 1) {
 if ($data->masshtab == 2) {
     echo json_encode($result->five_hundred());
 }
+if ($data->masshtab == 3) {
+    echo json_encode($result->three_hundred());
+}
