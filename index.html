@@ -4,150 +4,149 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="KARTA NOMENKLATURASINI ANIQLASH">
-    <title>KARTA NOMENKLATURASINI ANIQLASH</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <link href="./assets/css/main.css" rel="stylesheet">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>Jumbotron example · Bootstrap v5.0</title>
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
-        <div class="container">
-            <a class="navbar-brand" href="#">KARTA NOMENKLATURASINI ANIQLASH</a>
-        </div>
-    </nav>
 
     <div class="container">
-        <div class="card py-3 mb-2">
-            <div class="card-body">
-                <h4 class="card-text">
-                    Программа перевода географических координат (система коорд. 1942 года) точки в номенклатуру листа
-                    топокарты, на которой она находится
-                </h4>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-
-                <div class="card p-4">
-                    <div class="card-body">
-                        <h3 class="card-text">Koordinatalarni kriting: </h3>
-
-                    </div>
-                    <form id="form">
-                        <div class="input-div">
-                            <h3>Gradus minut sekund</h3>
-                            Kenglik:
-                            <input type="number" id="lat1" onchange="chanje_degre()" required> °
-                            <input type="number" id="lat2" onchange="chanje_degre()" required> &apos;
-                            <input type="number" id="lat3" onchange="chanje_degre()" required> &quot;
-
-                        </div>
-
-                        <div class="input-div">
-                            Uzoqlik:
-                            <input type="number" id="long1"  onchange="chanje_degre()" required> °
-                            <input type="number" id="long2" onchange="chanje_degre()" required> &apos;
-                            <input type="number" id="long3" onchange="chanje_degre()" required> &quot;
-                        </div>
-
-                        <h3>O`nlik gradus</h3>
-                        <div class="input-div">
-                            Kenglik:
-                            <input  id="lat0" style="width: 200px;" onchange="chanje_demical_degree()" required> °
-                        </div>
-                        <div class="input-div">
-                            Uzoqlik:
-                            <input type="text" id="long0" style="width: 200px;"  onchange="chanje_demical_degree()"  required> °
-                        </div>
-                        <div class="input-div">
-                            Masshtabni tanlang:
-                            <select id="masshtab" class="form-select" aria-label="Default select example"
-                                style="width: 50px !important; min-width: 150px; max-width: 150px; display: inline;">
-                                <option value="1">1000 000</option>
-                                <option value="2">500 000</option>
-                                <option value="3">300 000</option>
-                                <option value="4">200 000</option>
-                                <option value="5">100 000</option>
-                                <option value="6">50 000</option>
-                                <option value="7">25 000</option>
-                                <option value="8">10 000</option>
-                                <option value="9">5 000</option>
-                                <option value="10">2 000</option>
-                            </select>
-                        </div>
-
-                        <div class="input-div">
-                            <button class="btn btn-primary">Hisoblash</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+                <span class="fs-4"><b>
+                        <span class="text-success">GEO</span><span class="text-danger">INFO</span><span
+                            class="text-primary">.UZ</span>
+                    </b></span>
+            </a>
 
 
-            <div class="col">
-                <div class="card p-4" style="height: 300px;">
-                    <div class="card-body">
-                        <div id="result">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card p-3 my-2">
-
-            <div class="card-body">
-                <div class="h3 card-text">
-                    Система разграфки и номенклатуры топографических карты
-                </div>
-
-            </div>
-            <div class="card-text">
-
-
-                Масштаб 1:100 000 - делением миллионного листа на 144 части ( 1, 2, 3, ..., 144 )
-                Пример: N-37-56
-                <hr>
-
-                Масштаб 1:50 000 - делением 100-тысячного листа на 4 части ( А,Б,В,Г )
-                Пример: N-37-56-А
-                <hr>
-
-                Масштаб 1:25 000 - из 50-тысячного листа, разграфкой на 4 части ( а,б,в,г )
-                Пример: N-37-56-А-в
-                <hr>
-
-                Масштаб 1:10 000 - из 25-тысячного, на 4 части ( 1,2,3,4 )
-                Пример: N-37-56-А-в-1
-                <hr>
-
-                1:5 000 - из 100-тыс-го, делением на 256 частей (16х16), с нумерацией от 1 до 256
-                Пример: N-37-56(70)
-                <hr>
-
-
-
-
-            </div>
-            <h5 class="card-text">
-                Советские карты составлялись в равноугольной проекции Гаусса-Крюгера, вычисленной по параметрам
-                референц-эллипсоида Красовского.
-            </h5>
-        </div>
-        <div class="p-4"></div>
+        </header>
     </div>
 
 
+    <div class="mx-auto p-5 bg-light rounded-3  col-8">
+        <div class="container">
+            <h1 class="display-5">Karta nomenklaturasini aniqlash</h1>
+            <p>
 
+            <h3 style="text-align: center;">Topografik kartalarni varaqalarga bo`lish, hamda bu
+                varaqlarni
+                belgilash, yani ularga nom berish tizimga <span style="color: #ff0000;">nomenklatura</span>
+                deyiladi.</h3>
+            <br>
+            <p style=" font-size: 18px; text-align: justify">Turli masshtabdagi topografk kartalarni
+                nomenklatura asosi uchun
+                xalqaro 1:1000000 masshtabdagi
+                karta nomenklaturasi asos qilib olingan. Bunda karta varag`ini hosil qilish uchun yer shari
+                180&deg;&nbsp; uzoqlikdagi meridiandan g`arbdan sharqqa meridianlar bilan zonalarga bo`linadi va
+                ekvator tekisligidan shimol va janub tomonga parallellar o`tkaziladi natijada yer shari
+                trapetsiyalar ya`ni karta varoqlariga bo`linadi.
+                <img class="" src="./assets/img/nomenklatura.png" alt="geoinfo.uz"
+                    style="width: 300px; float: left; padding: 15px;" />
 
+                1:1 000 000 masshtabli karta varag`ining o`lcham<strong>meridian</strong> bo`yicha 4&deg; va
+                <strong>parallel</strong> bo`yicha 6&deg; ga teng. Karta varaqlarini nomenklatura tizimida
+                nomerlash uchun ekvatordan qutblarga tomon 4&deg; dan parallel o`tkazilb -
+                <strong>qator</strong>180&deg; li meridiandan boshlab 6&deg; dan meridianlar o`tkazilib
+                -&nbsp;<strong>kolonnalar</strong> hosil qilinadi.
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-        crossorigin="anonymous"></script>
+                <img class="" src="./assets/img/karta.png" alt="geoinfo.uz"
+                    style="width: 300px; float: right; padding: 15px;" />
+                Turli masshtabdagi topografk kartalarni
+                nomenklatura asosi uchun
+                xalqaro 1:1000000 masshtabdagi
+                karta nomenklaturasi asos qilib olingan. Bunda karta varag`ini hosil qilish uchun yer shari
+                180&deg;&nbsp; uzoqlikdagi meridiandan g`arbdan sharqqa meridianlar bilan zonalarga bo`linadi va
+                ekvator tekisligidan shimol va janub tomonga parallellar o`tkaziladi natijada yer shari
+                trapetsiyalar ya`ni karta varoqlariga bo`linadi.
+                Turli masshtabdagi topografk kartalarni
+                nomenklatura asosi uchun
+                xalqaro 1:1000000 masshtabdagi
+                karta nomenklaturasi asos qilib olingan. Bunda karta varag`ini hosil qilish uchun yer shari
+                180&deg;&nbsp; uzoqlikdagi meridiandan g`arbdan sharqqa meridianlar bilan zonalarga bo`linadi va
+                ekvator tekisligidan shimol va janub tomonga parallellar o`tkaziladi natijada yer shari
+                trapetsiyalar ya`ni karta varoqlariga bo`linadi.Turli masshtabdagi topografk kartalarni
+                nomenklatura asosi uchun
+                xalqaro 1:1000000 masshtabdagi
+                karta nomenklaturasi asos qilib olingan. Bunda karta varag`ini hosil qilish uchun yer shari
+                180&deg;&nbsp; uzoqlikdagi meridiandan g`arbdan sharqqa meridianlar bilan zonalarga bo`linadi va
+                ekvator tekisligidan shimol va janub tomonga parallellar o`tkaziladi natijada yer shari
+                trapetsiyalar ya`ni karta varoqlariga bo`linadi.
+            </p>
+            <button class="btn btn-primary btn-lg" type="button">To`liq ma`lumot</button>
+        </div>
+
+    </div>
+
+    <div class="mx-auto p-5 bg-light rounded-3  col-8 mt-4">
+        <div class="container">
+
+            <form id="form">
+                <div class="input-div">
+                    <h3>Gradus minut sekund</h3>
+                    Kenglik:
+                    <input type="number" id="lat1" onchange="chanje_degre()" required> °
+                    <input type="number" id="lat2" onchange="chanje_degre()" required> &apos;
+                    <input type="number" id="lat3" onchange="chanje_degre()" required> &quot;
+
+                </div>
+
+                <div class="input-div">
+                    Uzoqlik:
+                    <input type="number" id="long1" onchange="chanje_degre()" required> °
+                    <input type="number" id="long2" onchange="chanje_degre()" required> &apos;
+                    <input type="number" id="long3" onchange="chanje_degre()" required> &quot;
+                </div>
+
+                <h3>O`nlik gradus</h3>
+                <div class="input-div">
+                    Kenglik:
+                    <input id="lat0" style="width: 200px;" onchange="chanje_demical_degree()" required> °
+                </div>
+                <div class="input-div">
+                    Uzoqlik:
+                    <input type="text" id="long0" style="width: 200px;" onchange="chanje_demical_degree()" required>
+                    °
+                </div>
+                <div class="input-div">
+                    Masshtabni tanlang:
+                    <select id="masshtab" class="form-select" aria-label="Default select example"
+                        style="width: 50px !important; min-width: 150px; max-width: 150px; display: inline;">
+                        <option value="1">1000 000</option>
+                        <option value="2">500 000</option>
+                        <option value="3">300 000</option>
+                        <!-- <option value="4">200 000</option> -->
+                        <option value="5">100 000</option>
+                        <option value="6">50 000</option>
+                        <option value="7">25 000</option>
+                        <option value="8">10 000</option>
+                        <option value="9">5 000</option>
+                        <option value="10">2 000</option>
+                    </select>
+                </div>
+
+                <div class="input-div">
+                    <button class="btn btn-primary">Hisoblash</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+        &copy; 2021
+    </footer>
+
     <script src="./assets/js/main.js"></script>
+
 </body>
 
 </html>

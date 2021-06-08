@@ -32,3 +32,23 @@ if ($data->masshtab == 2) {
 if ($data->masshtab == 3) {
     echo json_encode($result->three_hundred());
 }
+if ($data->masshtab == 5) {
+    echo json_encode($result->hundred());
+}
+if ($data->masshtab == 6) {
+    echo json_encode($result->fifty());
+}
+if ($data->masshtab == 7) {
+    echo json_encode($result->tventy_five());
+}
+
+if ($data->masshtab == 8) {
+    echo json_encode($result->teen());
+}
+
+if ($data->masshtab == 9) {
+    echo json_encode($result->five());
+}
+if ($data->masshtab == 10) {
+    echo json_encode($result->two());
+}

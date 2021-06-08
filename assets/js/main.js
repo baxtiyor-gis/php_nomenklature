@@ -8,19 +8,21 @@ const form = document.querySelector("#form")
 // W: West-G`arb
 // E: East - Sharq
 
-const chanje_degre =  () => {
-    let lat0 = document.querySelector("#lat0").value;
+const chanje_degre = () => {
     let lat1 = document.querySelector("#lat1").value;
     let lat2 = document.querySelector("#lat2").value;
     let lat3 = document.querySelector("#lat3").value;
 
-    let long0 = document.querySelector("#long0").value;
     let long1 = document.querySelector("#long1").value;
     let long2 = document.querySelector("#long2").value;
     let long3 = document.querySelector("#long3").value;
 
-    let latitude = DMSToDD(lat1, lat2, lat3).toFixed(7)
-    let longitude =  DMSToDD(long1, long2, long3).toFixed(7)
+    let latitude = DMSToDD(lat1, lat2, lat3)
+    // .toFixed(7)
+    let longitude = DMSToDD(long1, long2, long3)
+    // .toFixed(7)
+    console.log(latitude);
+    console.log(longitude);
 
     if (lat1 & lat2 & lat3) {
         document.querySelector("#lat0").value = latitude
@@ -38,7 +40,7 @@ const chanje_demical_degree = () => {
     let long0 = document.querySelector("#long0").value;
     let lat2 = document.querySelector("#lat2").value;
     let lat3 = document.querySelector("#lat3").value;
-    
+
     let long1 = document.querySelector("#long1").value;
     let long2 = document.querySelector("#long2").value;
     let long3 = document.querySelector("#long3").value;
@@ -127,7 +129,7 @@ const renderHtml = (data) => {
 }
 
 const DMSToDD = (d, m, s) => {
-    return parseFloat(d) + (parseFloat(m) / 60) + (parseFloat(s) / (60 * 60));
+    return parseFloat(d) + (m / 60) + (s / (60 * 60));
 }
 
 const DDToDMS = (deg) => {

@@ -1,0 +1,47 @@
+<form id="form">
+    <div class="input-div">
+        <h3>Gradus minut sekund</h3>
+        Kenglik:
+        <input type="number" id="lat1" min="0" max="90" onchange="chanje_degre()" required> °
+        <input type="number" id="lat2" min="0" max="60" onchange="chanje_degre()" required> &apos;
+        <input type="number" id="lat3" min="0" max="60" onchange="chanje_degre()" required> &quot;
+
+    </div>
+
+    <div class="input-div">
+        Uzoqlik:
+        <input type="number" id="long1" min="0" max="180"  onchange="chanje_degre()" required> °
+        <input type="number" id="long2" min="0" max="60" onchange="chanje_degre()" required> &apos;
+        <input type="number" id="long3" min="0" max="60" onchange="chanje_degre()" required> &quot;
+    </div>
+
+    <h3>O`nlik gradus</h3>
+    <div class="input-div">
+        Kenglik:
+        <input  id="lat0" style="width: 200px;" onchange="chanje_demical_degree()" required> °
+    </div>
+    <div class="input-div">
+        Uzoqlik:
+        <input type="text" id="long0" style="width: 200px;"  onchange="chanje_demical_degree()"  required> °
+    </div>
+    <div class="input-div">
+        Masshtabni tanlang:
+        <select id="masshtab" class="form-select" aria-label="Default select example"
+            style="width: 50px !important; min-width: 150px; max-width: 150px; display: inline;">
+            <option value="1">1000 000</option>
+            <option value="2">500 000</option>
+            <option value="3">300 000</option>
+            <!-- <option value="4">200 000</option> -->
+            <option value="5">100 000</option>
+            <option value="6">50 000</option>
+            <option value="7">25 000</option>
+            <option value="8">10 000</option>
+            <option value="9">5 000</option>
+            <option value="10">2 000</option>
+        </select>
+    </div>
+
+    <div class="input-div">
+        <button class="btn btn-primary">Hisoblash</button>
+    </div>
+</form>
